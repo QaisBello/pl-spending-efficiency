@@ -1,0 +1,21 @@
+source,check,rows_affected,finding,action
+results,Matches parsed,6840,6840 matches in 18 seasons (380 each),-
+results,Club names,23,Same club spelt differently across seasons (e.g. 'Liverpool' and 'Liverpool FC'),Standardised to one name per club
+fx,Exchange rates,18,"GBP per EUR, July-June average of daily rates: 0.750 to 0.886",Transfer fees (EUR) converted to GBP at the rate for their season
+transfers,Rows read (2008-09 to 2022-23),3758,Top-six transfer rows from the Transfermarkt league history,-
+transfers,Fee type: end_of_loan,1115,"Player returning from loan, no fee",No fee counted
+transfers,Fee type: loan_no_fee,972,Loan with no fee,No fee counted
+transfers,Fee type: free,336,Free transfer,No fee counted
+transfers,Fee type: unknown,304,Fee shown as '-' or '?' (not disclosed),No fee counted
+transfers,Loan fees,162,Fee paid to borrow a player,"Counted, as Transfermarkt does"
+transfers,Duplicate transfers,25,"Same player, club, window and fee listed twice",Kept one
+transfers,Rows read (dcaribou),2556,Top-six transfers from Transfermarkt player histories,-
+transfers,Duplicate transfers (dcaribou),0,Same player and date listed twice,Kept one
+transfers,Cross-check 2022-23,2,The two Transfermarkt extracts agree within 5% on 10 of 12 club-direction totals (max gap EUR 11.1m),"League history used to 2022-23, player histories from 2023-24"
+accounts,Figures collected,100,Wage bills found for 100 of 108 club-seasons; every figure has a source URL,-
+accounts,Wage bill not found,8,Manchester City 2025-26; Liverpool 2025-26; Chelsea 2012-13; Chelsea 2025-26; Arsenal 2025-26; Tottenham 2008-09; Tottenham 2012-13; Tottenham 2025-26,Left blank: no estimates. Those seasons are left out of wage-based measures
+accounts,Accounting periods not 12 months,2,"City 2016-17 (13 months) and Liverpool 2011-12 (10 months), as published",Flagged; wages scaled to 12 months for per-season measures
+accounts,Low-confidence figures,1,Figure from a secondary source only (see notes),Kept and flagged
+verdict,Hidden costs,4,Costs kept off City's accounts 2009-10 to 2017-18: GBP 66.18m,Added back to City's wages in the verdict-adjusted scenario
+verdict,Owner-funded sponsorship,9,Sponsorship income actually paid by the owner: GBP 830.69m,Removed from City's revenue in the verdict-adjusted scenario
+output,Club-seasons,108,6 clubs x 18 seasons,Written to club_seasons.csv

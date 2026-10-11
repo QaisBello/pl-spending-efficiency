@@ -1,0 +1,7 @@
+club,seasons,pts,titles,avg_pts,avg_wage_index,avg_over_pts,over_pts_ci_low,over_pts_ci_high,total_over_pts,avg_over_pts_adj,over_pts_ci_low_adj,over_pts_ci_high_adj,cost_per_point_gbp_m,net_spend_gbp_m
+Manchester City,15,1245,8,83.0,1.171,7.51,2.44,12.55,112.7,7.26,2.12,12.57,4.427,1283.0
+Liverpool,15,1120,2,74.7,1.048,0.95,-5.5,7.88,14.2,1.0,-5.37,7.82,3.855,439.0
+Arsenal,15,1079,0,71.9,0.905,0.51,-3.52,4.68,7.7,0.56,-3.51,4.76,3.723,810.0
+Tottenham,15,994,0,66.3,0.629,0.44,-5.41,5.47,6.6,0.48,-5.38,5.66,2.923,586.0
+Chelsea,15,1058,3,70.5,1.127,-4.32,-10.83,1.98,-64.8,-4.26,-11.05,1.99,4.853,1163.0
+Manchester United,15,1045,1,69.7,1.12,-5.09,-10.99,0.51,-76.4,-5.04,-10.61,0.79,4.987,1223.0
