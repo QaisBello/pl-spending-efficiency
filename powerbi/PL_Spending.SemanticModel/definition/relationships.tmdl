@@ -1,0 +1,23 @@
+relationship fa8b9bcc-fc61-5c44-b168-8aab0cfc4531
+	fromColumn: Efficiency.club
+	toColumn: Clubs.club
+
+relationship 1e1c3a62-e14f-59ac-ac97-66f5d3551faf
+	fromColumn: Transfers.club
+	toColumn: Clubs.club
+
+relationship 87b994e7-209d-5b83-b9c6-c207f3667f17
+	fromColumn: Efficiency.season
+	toColumn: Seasons.season
+
+relationship 80c727fd-7323-5696-8148-b6b6d4bf41b1
+	fromColumn: Transfers.season
+	toColumn: Seasons.season
+
+relationship f9200fba-3b5f-5d3e-9a9f-8ff56f4ee551
+	fromColumn: 'Club Seasons'.club
+	toColumn: Clubs.club
+
+relationship 47bea900-c9bd-5fdc-ac18-6044a2b33e68
+	fromColumn: 'Club Seasons'.season
+	toColumn: Seasons.season

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f1f819efca345cd6af36",
+  "position": {
+    "x": 24,
+    "y": 488,
+    "z": 12,
+    "width": 1232,
+    "height": 220,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clubs"
+                    }
+                  },
+                  "Property": "club"
+                }
+              },
+              "queryRef": "Clubs.club",
+              "nativeQueryRef": "club",
+              "displayName": "Club"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Titles"
+                }
+              },
+              "queryRef": "Efficiency.Titles",
+              "nativeQueryRef": "Titles"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Average Points"
+                }
+              },
+              "queryRef": "Efficiency.Average Points",
+              "nativeQueryRef": "Average Points",
+              "displayName": "Points a season"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Points Above Expected per Season"
+                }
+              },
+              "queryRef": "Efficiency.Points Above Expected per Season",
+              "nativeQueryRef": "Points Above Expected per Season",
+              "displayName": "Above expected"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clubs"
+                    }
+                  },
+                  "Property": "over_pts_ci_low"
+                }
+              },
+              "queryRef": "Clubs.over_pts_ci_low",
+              "nativeQueryRef": "over_pts_ci_low",
+              "displayName": "95% CI low"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clubs"
+                    }
+                  },
+                  "Property": "over_pts_ci_high"
+                }
+              },
+              "queryRef": "Clubs.over_pts_ci_high",
+              "nativeQueryRef": "over_pts_ci_high",
+              "displayName": "95% CI high"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Points Above Expected per Season (Adjusted)"
+                }
+              },
+              "queryRef": "Efficiency.Points Above Expected per Season (Adjusted)",
+              "nativeQueryRef": "Points Above Expected per Season (Adjusted)",
+              "displayName": "Adjusted for hidden costs"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Cost per Point"
+                }
+              },
+              "queryRef": "Efficiency.Cost per Point",
+              "nativeQueryRef": "Cost per Point",
+              "displayName": "Cost per point"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Efficiency"
+                  }
+                },
+                "Property": "Points Above Expected per Season"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Clubs: 15 complete seasons each (bootstrap 95% confidence intervals)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

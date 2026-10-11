@@ -1,0 +1,30 @@
+/// Premier League seasons 2008-09 to 2025-26 (distinct seasons from the league tables).
+table Seasons
+
+	column season
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: season
+		sortByColumn: 'Season Order'
+
+	column 'Season Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Season Order
+
+	partition Seasons = m
+		mode: import
+		source = ```
+				let
+				    Source = Csv.Document(Web.Contents(BaseUrl, [RelativePath = "league_tables.csv"]), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Seasons = Table.Distinct(Table.SelectColumns(Promoted, {"season"})),
+				    Typed = Table.TransformColumnTypes(Seasons, {{"season", type text}}),
+				    Result = Table.AddColumn(Typed, "Season Order", each Number.FromText(Text.Start([season], 4)), Int64.Type)
+				in
+				    Result
+				```
+

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6823d185d6c55d59ad9e",
+  "position": {
+    "x": 24,
+    "y": 184,
+    "z": 10,
+    "width": 820,
+    "height": 300,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Seasons"
+                    }
+                  },
+                  "Property": "season"
+                }
+              },
+              "queryRef": "Seasons.season",
+              "nativeQueryRef": "season",
+              "displayName": "Season"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Squad Cost"
+                }
+              },
+              "queryRef": "Efficiency.Squad Cost",
+              "nativeQueryRef": "Squad Cost",
+              "displayName": "Squad cost"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "club"
+                }
+              },
+              "queryRef": "Efficiency.club",
+              "nativeQueryRef": "club",
+              "displayName": "Club"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Seasons"
+                  }
+                },
+                "Property": "season"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Squad cost (wages + net transfer spend) by season'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,941 @@
+{
+  "tables": [
+    {
+      "name": "Efficiency",
+      "description": "One row per club per season where all six wage bills are known (15 seasons x 6 clubs = 90). Expected points come from the Python regression of points on the wage index (wage bill / top-six average that season).",
+      "columns": [
+        {
+          "name": "club",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "season",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "position",
+          "type": "int64",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "pts",
+          "type": "int64",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "won",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "drawn",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "lost",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "gf",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "ga",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "gd",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "champions",
+          "type": "boolean",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "fy_end",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "months",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wages_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wages_12m_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "revenue_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "partial_year",
+          "type": "boolean",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "low_confidence",
+          "type": "boolean",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "source_url",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "transfer_spend_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "transfer_income_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "net_spend_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "hidden_cost_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "owner_funded_sponsorship_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wages_adj_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wage_index",
+          "type": "double",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "expected_pts",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "over_pts",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wage_index_adj",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "expected_pts_adj",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "over_pts_adj",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "squad_cost_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "cost_per_point_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wages_per_point_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wage_revenue_pct",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wage_revenue_pct_adj",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "Club Season",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        }
+      ]
+    },
+    {
+      "name": "Clubs",
+      "description": "One row per club: totals, titles and points above expected with 95% bootstrap confidence intervals (reported and verdict-adjusted).",
+      "columns": [
+        {
+          "name": "club",
+          "type": "string",
+          "hidden": false,
+          "key": true
+        },
+        {
+          "name": "seasons",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "pts",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "titles",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "avg_pts",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "avg_wage_index",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "avg_over_pts",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "over_pts_ci_low",
+          "type": "double",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "over_pts_ci_high",
+          "type": "double",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "total_over_pts",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "avg_over_pts_adj",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "over_pts_ci_low_adj",
+          "type": "double",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "over_pts_ci_high_adj",
+          "type": "double",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "cost_per_point_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "net_spend_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        }
+      ]
+    },
+    {
+      "name": "Seasons",
+      "description": "Premier League seasons 2008-09 to 2025-26 (distinct seasons from the league tables).",
+      "columns": [
+        {
+          "name": "season",
+          "type": "string",
+          "hidden": false,
+          "key": true
+        },
+        {
+          "name": "Season Order",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        }
+      ]
+    },
+    {
+      "name": "Transfers",
+      "description": "Every recorded transfer in and out for the six clubs, 2008-09 to 2025-26 (Transfermarkt via ewenme and dcaribou), fees converted to pounds at the daily rate.",
+      "columns": [
+        {
+          "name": "club",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "season",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "window",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "player",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "other_club",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "fee_text",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "fee_type",
+          "type": "string",
+          "hidden": false,
+          "key": false
+        },
+        {
+          "name": "fee_eur_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "fee_gbp_m",
+          "type": "double",
+          "hidden": false,
+          "key": false
+        }
+      ]
+    },
+    {
+      "name": "Club Seasons",
+      "description": "Every club and season, 2008-09 to 2025-26, with wages and revenue where the accounts were found (8 of 108 wage bills are missing and are not estimated). Used for the money measures, which do not need the regression.",
+      "columns": [
+        {
+          "name": "club",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "season",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "position",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "pts",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "won",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "drawn",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "lost",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "gf",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "ga",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "gd",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "champions",
+          "type": "boolean",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "fy_end",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "months",
+          "type": "int64",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wages_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "wages_12m_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "revenue_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "partial_year",
+          "type": "boolean",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "low_confidence",
+          "type": "boolean",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "source_url",
+          "type": "string",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "transfer_spend_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "transfer_income_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "net_spend_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "hidden_cost_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        },
+        {
+          "name": "owner_funded_sponsorship_gbp_m",
+          "type": "double",
+          "hidden": true,
+          "key": false
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "fromTable": "Efficiency",
+      "fromColumn": "club",
+      "toTable": "Clubs",
+      "toColumn": "club",
+      "both": false
+    },
+    {
+      "fromTable": "Transfers",
+      "fromColumn": "club",
+      "toTable": "Clubs",
+      "toColumn": "club",
+      "both": false
+    },
+    {
+      "fromTable": "Efficiency",
+      "fromColumn": "season",
+      "toTable": "Seasons",
+      "toColumn": "season",
+      "both": false
+    },
+    {
+      "fromTable": "Transfers",
+      "fromColumn": "season",
+      "toTable": "Seasons",
+      "toColumn": "season",
+      "both": false
+    },
+    {
+      "fromTable": "Club Seasons",
+      "fromColumn": "club",
+      "toTable": "Clubs",
+      "toColumn": "club",
+      "both": false
+    },
+    {
+      "fromTable": "Club Seasons",
+      "fromColumn": "season",
+      "toTable": "Seasons",
+      "toColumn": "season",
+      "both": false
+    }
+  ],
+  "measures": [
+    {
+      "name": "Points",
+      "table": "Efficiency",
+      "folder": "Results",
+      "format": "#,0",
+      "dax": "SUM ( Efficiency[pts] )",
+      "description": "League points."
+    },
+    {
+      "name": "Titles",
+      "table": "Efficiency",
+      "folder": "Results",
+      "format": "#,0",
+      "dax": "CALCULATE ( COUNTROWS ( Efficiency ), Efficiency[champions] == TRUE () )",
+      "description": "League titles."
+    },
+    {
+      "name": "Average Points",
+      "table": "Efficiency",
+      "folder": "Results",
+      "format": "0.0",
+      "dax": "AVERAGE ( Efficiency[pts] )",
+      "description": "Points per season."
+    },
+    {
+      "name": "Expected Points",
+      "table": "Efficiency",
+      "folder": "Model",
+      "format": "#,0",
+      "dax": "SUM ( Efficiency[expected_pts] )",
+      "description": "Points the wage index predicts (Python regression)."
+    },
+    {
+      "name": "Points Above Expected",
+      "table": "Efficiency",
+      "folder": "Model",
+      "format": "+#,0.0;-#,0.0;0",
+      "dax": "SUM ( Efficiency[over_pts] )",
+      "description": "Actual minus expected points."
+    },
+    {
+      "name": "Points Above Expected per Season",
+      "table": "Efficiency",
+      "folder": "Model",
+      "format": "+0.0;-0.0;0.0",
+      "dax": "AVERAGE ( Efficiency[over_pts] )",
+      "description": "Average points a season above (or below) what the wage bill predicts."
+    },
+    {
+      "name": "Points Above Expected per Season (Adjusted)",
+      "table": "Efficiency",
+      "folder": "Model",
+      "format": "+0.0;-0.0;0.0",
+      "dax": "AVERAGE ( Efficiency[over_pts_adj] )",
+      "description": "The same, with the costs the 114-charge verdict found hidden added to City's wage bill."
+    },
+    {
+      "name": "Average Wage Index",
+      "table": "Efficiency",
+      "folder": "Model",
+      "format": "0.00",
+      "dax": "AVERAGE ( Efficiency[wage_index] )",
+      "description": "Wage bill against the top-six average that season (1.00 = average)."
+    },
+    {
+      "name": "Wage Bill",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "SUM ( 'Club Seasons'[wages_gbp_m] )",
+      "description": "Wages as reported in the accounts."
+    },
+    {
+      "name": "Revenue",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "SUM ( 'Club Seasons'[revenue_gbp_m] )",
+      "description": "Revenue as reported."
+    },
+    {
+      "name": "Owner-Funded Sponsorship",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "SUM ( 'Club Seasons'[owner_funded_sponsorship_gbp_m] )",
+      "description": "Sponsorship the verdict found was funded by the owner (City only)."
+    },
+    {
+      "name": "Wages to Revenue",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "0.0%",
+      "dax": "DIVIDE ( [Wage Bill], [Revenue] )",
+      "description": "Wage bill as a share of reported revenue."
+    },
+    {
+      "name": "Wages to Revenue (Without Owner Money)",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "0.0%",
+      "dax": "DIVIDE ( [Wage Bill], [Revenue] - [Owner-Funded Sponsorship] )",
+      "description": "Wage bill as a share of revenue with owner-funded sponsorship taken out."
+    },
+    {
+      "name": "Net Transfer Spend",
+      "table": "Efficiency",
+      "folder": "Money",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "SUM ( Efficiency[net_spend_gbp_m] )",
+      "description": "Fees paid minus fees received."
+    },
+    {
+      "name": "Squad Cost",
+      "table": "Efficiency",
+      "folder": "Money",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "SUM ( Efficiency[squad_cost_gbp_m] )",
+      "description": "Wages (12-month basis) plus net transfer spend."
+    },
+    {
+      "name": "Cost per Point",
+      "table": "Efficiency",
+      "folder": "Money",
+      "format": "\u00a3#,0.00\"m\"",
+      "dax": "DIVIDE ( [Squad Cost], [Points] )",
+      "description": "Squad cost per league point."
+    },
+    {
+      "name": "Hidden Costs",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "SUM ( 'Club Seasons'[hidden_cost_gbp_m] )",
+      "description": "Costs the verdict found kept off City's books."
+    },
+    {
+      "name": "City Wages to Revenue 2009-18",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "0.0%",
+      "dax": "CALCULATE ( [Wages to Revenue], REMOVEFILTERS ( 'Club Seasons' ), REMOVEFILTERS ( Seasons ), REMOVEFILTERS ( Clubs ), 'Club Seasons'[club] = \"Manchester City\", 'Club Seasons'[season] >= \"2009-10\", 'Club Seasons'[season] <= \"2017-18\" )",
+      "description": "City's wages to reported revenue across the seasons the charges cover."
+    },
+    {
+      "name": "City Wages to Revenue 2009-18 (Without Owner Money)",
+      "table": "Club Seasons",
+      "folder": "Money",
+      "format": "0.0%",
+      "dax": "CALCULATE ( [Wages to Revenue (Without Owner Money)], REMOVEFILTERS ( 'Club Seasons' ), REMOVEFILTERS ( Seasons ), REMOVEFILTERS ( Clubs ), 'Club Seasons'[club] = \"Manchester City\", 'Club Seasons'[season] >= \"2009-10\", 'Club Seasons'[season] <= \"2017-18\" )",
+      "description": "The same without the owner-funded sponsorship."
+    },
+    {
+      "name": "Transfer Fees Paid",
+      "table": "Transfers",
+      "folder": "Transfers",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "CALCULATE ( SUM ( Transfers[fee_gbp_m] ), Transfers[direction] = \"in\" )",
+      "description": "Fees paid for incoming players."
+    },
+    {
+      "name": "Transfer Fees Received",
+      "table": "Transfers",
+      "folder": "Transfers",
+      "format": "\u00a3#,0.0\"m\"",
+      "dax": "CALCULATE ( SUM ( Transfers[fee_gbp_m] ), Transfers[direction] = \"out\" )",
+      "description": "Fees received."
+    },
+    {
+      "name": "Signings",
+      "table": "Transfers",
+      "folder": "Transfers",
+      "format": "#,0",
+      "dax": "CALCULATE ( COUNTROWS ( Transfers ), Transfers[direction] = \"in\" )",
+      "description": "Players signed (including free and loan)."
+    }
+  ],
+  "pages": [
+    {
+      "page": "Who got value",
+      "visuals": [
+        {
+          "type": "textbox",
+          "x": 24,
+          "y": 12,
+          "width": 1232,
+          "height": 52
+        },
+        {
+          "type": "scatterChart",
+          "x": 24,
+          "y": 76,
+          "width": 700,
+          "height": 400
+        },
+        {
+          "type": "clusteredBarChart",
+          "x": 740,
+          "y": 76,
+          "width": 516,
+          "height": 400
+        },
+        {
+          "type": "tableEx",
+          "x": 24,
+          "y": 488,
+          "width": 1232,
+          "height": 220
+        }
+      ]
+    },
+    {
+      "page": "Money",
+      "visuals": [
+        {
+          "type": "textbox",
+          "x": 24,
+          "y": 12,
+          "width": 860,
+          "height": 52
+        },
+        {
+          "type": "slicer",
+          "x": 900,
+          "y": 8,
+          "width": 356,
+          "height": 64
+        },
+        {
+          "type": "card",
+          "x": 24,
+          "y": 76,
+          "width": 400,
+          "height": 96
+        },
+        {
+          "type": "card",
+          "x": 436,
+          "y": 76,
+          "width": 400,
+          "height": 96
+        },
+        {
+          "type": "card",
+          "x": 848,
+          "y": 76,
+          "width": 408,
+          "height": 96
+        },
+        {
+          "type": "lineChart",
+          "x": 24,
+          "y": 184,
+          "width": 820,
+          "height": 300
+        },
+        {
+          "type": "clusteredBarChart",
+          "x": 860,
+          "y": 184,
+          "width": 396,
+          "height": 300
+        },
+        {
+          "type": "clusteredColumnChart",
+          "x": 24,
+          "y": 496,
+          "width": 1232,
+          "height": 212
+        }
+      ]
+    },
+    {
+      "page": "Transfers",
+      "visuals": [
+        {
+          "type": "textbox",
+          "x": 24,
+          "y": 12,
+          "width": 860,
+          "height": 52
+        },
+        {
+          "type": "slicer",
+          "x": 900,
+          "y": 8,
+          "width": 356,
+          "height": 64
+        },
+        {
+          "type": "card",
+          "x": 24,
+          "y": 76,
+          "width": 400,
+          "height": 96
+        },
+        {
+          "type": "card",
+          "x": 436,
+          "y": 76,
+          "width": 400,
+          "height": 96
+        },
+        {
+          "type": "card",
+          "x": 848,
+          "y": 76,
+          "width": 408,
+          "height": 96
+        },
+        {
+          "type": "clusteredColumnChart",
+          "x": 24,
+          "y": 184,
+          "width": 620,
+          "height": 524
+        },
+        {
+          "type": "tableEx",
+          "x": 660,
+          "y": 184,
+          "width": 596,
+          "height": 524
+        }
+      ]
+    }
+  ],
+  "base_url": "https://raw.githubusercontent.com/QaisBello/pl-spending-efficiency/main/data/clean/"
+}

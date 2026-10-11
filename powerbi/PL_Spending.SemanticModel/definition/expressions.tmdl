@@ -1,0 +1,2 @@
+/// Folder of cleaned CSVs from this repo (data/clean). Point it at a local folder or another branch to test.
+expression BaseUrl = "https://raw.githubusercontent.com/QaisBello/pl-spending-efficiency/main/data/clean/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

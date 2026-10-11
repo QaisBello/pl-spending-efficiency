@@ -1,0 +1,364 @@
+/// One row per club per season where all six wage bills are known (15 seasons x 6 clubs = 90). Expected points come from the Python regression of points on the wage index (wage bill / top-six average that season).
+table Efficiency
+
+	/// League points.
+	measure Points = SUM ( Efficiency[pts] )
+		formatString: #,0
+		displayFolder: Results
+
+	/// League titles.
+	measure Titles = CALCULATE ( COUNTROWS ( Efficiency ), Efficiency[champions] == TRUE () )
+		formatString: #,0
+		displayFolder: Results
+
+	/// Points per season.
+	measure 'Average Points' = AVERAGE ( Efficiency[pts] )
+		formatString: 0.0
+		displayFolder: Results
+
+	/// Points the wage index predicts (Python regression).
+	measure 'Expected Points' = SUM ( Efficiency[expected_pts] )
+		formatString: #,0
+		displayFolder: Model
+
+	/// Actual minus expected points.
+	measure 'Points Above Expected' = SUM ( Efficiency[over_pts] )
+		formatString: +#,0.0;-#,0.0;0
+		displayFolder: Model
+
+	/// Average points a season above (or below) what the wage bill predicts.
+	measure 'Points Above Expected per Season' = AVERAGE ( Efficiency[over_pts] )
+		formatString: +0.0;-0.0;0.0
+		displayFolder: Model
+
+	/// The same, with the costs the 114-charge verdict found hidden added to City's wage bill.
+	measure 'Points Above Expected per Season (Adjusted)' = AVERAGE ( Efficiency[over_pts_adj] )
+		formatString: +0.0;-0.0;0.0
+		displayFolder: Model
+
+	/// Wage bill against the top-six average that season (1.00 = average).
+	measure 'Average Wage Index' = AVERAGE ( Efficiency[wage_index] )
+		formatString: 0.00
+		displayFolder: Model
+
+	/// Fees paid minus fees received.
+	measure 'Net Transfer Spend' = SUM ( Efficiency[net_spend_gbp_m] )
+		formatString: £#,0.0"m"
+		displayFolder: Money
+
+	/// Wages (12-month basis) plus net transfer spend.
+	measure 'Squad Cost' = SUM ( Efficiency[squad_cost_gbp_m] )
+		formatString: £#,0.0"m"
+		displayFolder: Money
+
+	/// Squad cost per league point.
+	measure 'Cost per Point' = DIVIDE ( [Squad Cost], [Points] )
+		formatString: £#,0.00"m"
+		displayFolder: Money
+
+	column club
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	column position
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: position
+
+	column pts
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: pts
+
+	column won
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: won
+
+	column drawn
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: drawn
+
+	column lost
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: lost
+
+	column gf
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: gf
+
+	column ga
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: ga
+
+	column gd
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: gd
+
+	column champions
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: champions
+
+	column fy_end
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: fy_end
+
+	column months
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: months
+
+	column wages_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wages_gbp_m
+
+	column wages_12m_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wages_12m_gbp_m
+
+	column revenue_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: revenue_gbp_m
+
+	column partial_year
+		dataType: boolean
+		isHidden
+		summarizeBy: none
+		sourceColumn: partial_year
+
+	column low_confidence
+		dataType: boolean
+		isHidden
+		summarizeBy: none
+		sourceColumn: low_confidence
+
+	column source_url
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: source_url
+
+	column transfer_spend_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: transfer_spend_gbp_m
+
+	column transfer_income_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: transfer_income_gbp_m
+
+	column net_spend_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: net_spend_gbp_m
+
+	column hidden_cost_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: hidden_cost_gbp_m
+
+	column owner_funded_sponsorship_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: owner_funded_sponsorship_gbp_m
+
+	column wages_adj_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wages_adj_gbp_m
+
+	column wage_index
+		dataType: double
+		formatString: 0.00
+		summarizeBy: none
+		sourceColumn: wage_index
+
+	column expected_pts
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: expected_pts
+
+	column over_pts
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: over_pts
+
+	column wage_index_adj
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wage_index_adj
+
+	column expected_pts_adj
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: expected_pts_adj
+
+	column over_pts_adj
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: over_pts_adj
+
+	column squad_cost_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: squad_cost_gbp_m
+
+	column cost_per_point_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: cost_per_point_gbp_m
+
+	column wages_per_point_gbp_m
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wages_per_point_gbp_m
+
+	column wage_revenue_pct
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wage_revenue_pct
+
+	column wage_revenue_pct_adj
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: wage_revenue_pct_adj
+
+	column 'Club Season'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Club Season
+
+	partition Efficiency = m
+		mode: import
+		source = ```
+				let
+				    Source = Csv.Document(
+				        Web.Contents(BaseUrl, [RelativePath = "efficiency.csv"]),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    // empty cells and R's NA arrive as text and would fail the type change: make them null
+				    #"Blanks to Null" = Table.TransformColumns(#"Promoted Headers", {}, each if _ = "" or _ = "NA" then null else _),
+				    // True/TRUE/true all become true: pandas writes True, R writes TRUE
+				    #"Booleans" = Table.TransformColumns(#"Blanks to Null", {{"champions", each if _ = null then null else Text.Lower(_)}, {"partial_year", each if _ = null then null else Text.Lower(_)}, {"low_confidence", each if _ = null then null else Text.Lower(_)}}),
+				    #"Changed Types" = Table.TransformColumnTypes(
+				        #"Booleans",
+				        {
+				            {"club", type text},
+				            {"season", type text},
+				            {"position", Int64.Type},
+				            {"pts", Int64.Type},
+				            {"won", Int64.Type},
+				            {"drawn", Int64.Type},
+				            {"lost", Int64.Type},
+				            {"gf", Int64.Type},
+				            {"ga", Int64.Type},
+				            {"gd", Int64.Type},
+				            {"champions", type logical},
+				            {"fy_end", type text},
+				            {"months", Int64.Type},
+				            {"wages_gbp_m", type number},
+				            {"wages_12m_gbp_m", type number},
+				            {"revenue_gbp_m", type number},
+				            {"partial_year", type logical},
+				            {"low_confidence", type logical},
+				            {"source_url", type text},
+				            {"transfer_spend_gbp_m", type number},
+				            {"transfer_income_gbp_m", type number},
+				            {"net_spend_gbp_m", type number},
+				            {"hidden_cost_gbp_m", type number},
+				            {"owner_funded_sponsorship_gbp_m", type number},
+				            {"wages_adj_gbp_m", type number},
+				            {"wage_index", type number},
+				            {"expected_pts", type number},
+				            {"over_pts", type number},
+				            {"wage_index_adj", type number},
+				            {"expected_pts_adj", type number},
+				            {"over_pts_adj", type number},
+				            {"squad_cost_gbp_m", type number},
+				            {"cost_per_point_gbp_m", type number},
+				            {"wages_per_point_gbp_m", type number},
+				            {"wage_revenue_pct", type number},
+				            {"wage_revenue_pct_adj", type number}
+				        },
+				        "en-US"
+				    ),
+				    #"Filtered Rows" = #"Changed Types",
+				    #"Club Season" = Table.AddColumn(#"Filtered Rows", "Club Season", each [club] & " " & [season], type text),
+				    Result = #"Club Season"
+				in
+				    Result
+				```
+

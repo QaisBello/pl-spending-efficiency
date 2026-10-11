@@ -1,0 +1,161 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "b1033dfae4705c409b19",
+  "position": {
+    "x": 660,
+    "y": 184,
+    "z": 11,
+    "width": 596,
+    "height": 524,
+    "tabOrder": 11
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transfers"
+                    }
+                  },
+                  "Property": "player"
+                }
+              },
+              "queryRef": "Transfers.player",
+              "nativeQueryRef": "player",
+              "displayName": "Player"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transfers"
+                    }
+                  },
+                  "Property": "club"
+                }
+              },
+              "queryRef": "Transfers.club",
+              "nativeQueryRef": "club",
+              "displayName": "Club"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transfers"
+                    }
+                  },
+                  "Property": "season"
+                }
+              },
+              "queryRef": "Transfers.season",
+              "nativeQueryRef": "season",
+              "displayName": "Season"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transfers"
+                    }
+                  },
+                  "Property": "direction"
+                }
+              },
+              "queryRef": "Transfers.direction",
+              "nativeQueryRef": "direction",
+              "displayName": "In/out"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transfers"
+                    }
+                  },
+                  "Property": "other_club"
+                }
+              },
+              "queryRef": "Transfers.other_club",
+              "nativeQueryRef": "other_club",
+              "displayName": "From/to"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transfers"
+                    }
+                  },
+                  "Property": "fee_gbp_m"
+                }
+              },
+              "queryRef": "Transfers.fee_gbp_m",
+              "nativeQueryRef": "fee_gbp_m",
+              "displayName": "Fee"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Transfers"
+                  }
+                },
+                "Property": "fee_gbp_m"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transfers, largest fees first'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

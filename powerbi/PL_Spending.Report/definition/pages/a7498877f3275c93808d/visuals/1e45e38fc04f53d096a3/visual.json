@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1e45e38fc04f53d096a3",
+  "position": {
+    "x": 900,
+    "y": 8,
+    "z": 1800,
+    "width": 356,
+    "height": 64,
+    "tabOrder": 1800
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clubs"
+                    }
+                  },
+                  "Property": "club"
+                }
+              },
+              "queryRef": "Clubs.club",
+              "nativeQueryRef": "club",
+              "displayName": "Club"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

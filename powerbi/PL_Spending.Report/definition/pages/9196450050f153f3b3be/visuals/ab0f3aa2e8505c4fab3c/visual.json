@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ab0f3aa2e8505c4fab3c",
+  "position": {
+    "x": 24,
+    "y": 12,
+    "z": 0,
+    "width": 1232,
+    "height": 52,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Spent more, or spent better? Points against the wage bill, Premier League top six",
+                    "textStyle": {
+                      "fontSize": "18pt",
+                      "color": "#13201B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

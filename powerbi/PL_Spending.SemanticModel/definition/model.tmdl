@@ -1,0 +1,14 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table Efficiency
+ref table Clubs
+ref table Seasons
+ref table Transfers
+ref table 'Club Seasons'

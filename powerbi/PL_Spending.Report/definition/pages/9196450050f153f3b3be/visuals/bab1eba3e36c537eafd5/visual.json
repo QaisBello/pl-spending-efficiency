@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bab1eba3e36c537eafd5",
+  "position": {
+    "x": 24,
+    "y": 76,
+    "z": 10,
+    "width": 700,
+    "height": 400,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Club Season"
+                }
+              },
+              "queryRef": "Efficiency.Club Season",
+              "nativeQueryRef": "Club Season",
+              "displayName": "Club and season"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "club"
+                }
+              },
+              "queryRef": "Efficiency.club",
+              "nativeQueryRef": "club",
+              "displayName": "Club"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Average Wage Index"
+                }
+              },
+              "queryRef": "Efficiency.Average Wage Index",
+              "nativeQueryRef": "Average Wage Index",
+              "displayName": "Wage index"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Efficiency"
+                    }
+                  },
+                  "Property": "Points"
+                }
+              },
+              "queryRef": "Efficiency.Points",
+              "nativeQueryRef": "Points",
+              "displayName": "Points"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Each dot is one club in one season: wage index (1.00 = top-six average) against points'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
