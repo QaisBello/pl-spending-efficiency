@@ -106,7 +106,7 @@ RELATIONSHIPS = [
 E = "Efficiency"
 MEASURES = [
     ("Points", E, "Results", "#,0", "SUM ( Efficiency[pts] )", "League points."),
-    ("Titles", E, "Results", "#,0", "CALCULATE ( COUNTROWS ( Efficiency ), Efficiency[champions] == TRUE () )", "League titles."),
+    ("Titles", E, "Results", "#,0", "CALCULATE ( COUNTROWS ( Efficiency ), Efficiency[champions] == TRUE () ) + 0", "League titles (0 rather than blank for clubs without one)."),
     ("Average Points", E, "Results", "0.0", "AVERAGE ( Efficiency[pts] )", "Points per season."),
     ("Expected Points", E, "Model", "#,0", "SUM ( Efficiency[expected_pts] )", "Points the wage index predicts (Python regression)."),
     ("Points Above Expected", E, "Model", "+#,0.0;-#,0.0;0", "SUM ( Efficiency[over_pts] )", "Actual minus expected points."),
@@ -156,7 +156,8 @@ PAGES = [
                            M(E, "Points Above Expected per Season", "Above expected"), C("Clubs", "over_pts_ci_low", "95% CI low"),
                            C("Clubs", "over_pts_ci_high", "95% CI high"), M(E, "Points Above Expected per Season (Adjusted)", "Adjusted for hidden costs"),
                            M(E, "Cost per Point", "Cost per point")]},
-               "Clubs: 15 complete seasons each (bootstrap 95% confidence intervals)", sort=(M(E, "Points Above Expected per Season"), "Descending"), z=12),
+               "Clubs: 15 complete seasons each (bootstrap 95% confidence intervals)", sort=(M(E, "Points Above Expected per Season"), "Descending"),
+               objects={"total": [{"properties": {"totals": lit(False)}}]}, z=12),
     ]),
     (p2, "Money", [
         text_box(p2, "title", 24, 12, 860, 52, "What it cost: squad cost per point, and who paid the wages", 18),

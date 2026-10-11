@@ -13,11 +13,11 @@ SUM ( Efficiency[pts] )
 
 ## Titles
 
-*Results* · table `Efficiency` · format `#,0` · League titles.
+*Results* · table `Efficiency` · format `#,0` · League titles (0 rather than blank for clubs without one).
 
 ```dax
 Titles =
-CALCULATE ( COUNTROWS ( Efficiency ), Efficiency[champions] == TRUE () )
+CALCULATE ( COUNTROWS ( Efficiency ), Efficiency[champions] == TRUE () ) + 0
 ```
 
 ## Average Points

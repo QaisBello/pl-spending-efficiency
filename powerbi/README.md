@@ -4,6 +4,10 @@ Premier League top-six spending efficiency, 2008-09 to 2025-26, as a Power BI re
 
 This folder is a Power BI project (`PL_Spending.pbip`): a TMDL semantic model and a PBIR report. It is generated from one Python spec, checked against Microsoft's JSON schemas, and its numbers are recomputed independently in pandas.
 
+![Who got value page in Power BI Desktop](docs/screenshots/who-got-value.png)
+
+*In Power BI Desktop after a refresh. Every card matches `docs/expected_values.md`.*
+
 ## Open it
 
 1. Open **`PL_Spending.pbip`** in Power BI Desktop. In versions before mid-2025, first turn on the preview features for Power BI Project (.pbip), the TMDL model format and the PBIR report format.
