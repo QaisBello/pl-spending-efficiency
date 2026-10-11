@@ -46,6 +46,10 @@ All sources are kept as collected in `data/raw/`. `src/clean.py` turns them into
 
 See [`docs/verdict-research.md`](docs/verdict-research.md) for every verdict figure, its source and its caveats.
 
+## Power BI version
+
+The same analysis as a ready-made Power BI report, in [`powerbi/`](powerbi/): who got value (wage index against points, points above expected with confidence intervals), money (cost per point, wages to revenue with and without owner-funded sponsorship) and every transfer. Every club figure is checked against the Python results. Open `powerbi/PL_Spending.pbip` in Power BI Desktop and click Refresh; it reads the cleaned data from this repo.
+
 ## Run it
 
 ```bash
